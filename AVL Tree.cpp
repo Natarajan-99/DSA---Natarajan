@@ -129,8 +129,13 @@ int main()
         root=insert(root,arr[i]);
 
     }
+    cout<<"PreOrder display"<<endl;
     PreOrder(root);
+    cout<<endl;
+    cout<<"PostOrder display"<<endl;
     PostOrder(root);
+    cout<<endl;
+    cout<<"InOrder display"<<endl;
     InOrder(root);
     return 0;
 }
