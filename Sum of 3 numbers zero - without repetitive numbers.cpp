@@ -3,23 +3,7 @@
 #include<vector>
 #include<algorithm>
 using namespace std;
-void find(vector<int> &arr)
-{
-    int l=arr.size();
-    for(int i=0;i<l;i++)
-    {
-        for(int j=i+1;j<l;j++)
-        {
-            for(int k=j+1;k<l;k++)
-            {
-                if(arr[i]+arr[j]+arr[k]==0)
-                {
-                    cout<<"index "<<i<<" "<<j<<" "<<k<<"; numbers are "<<arr[i]<<" "<<arr[j]<<" "<<arr[k]<<endl;
-                }
-            }
-        }
-    }
-}
+
 vector<vector<int>> triplet(vector<int> &arr)
 {
     vector<vector<int>> ans;
