@@ -1,18 +1,34 @@
-class Solution {
-public:
-    string frequencySort(string s) {
+#include <iostream>
+#include<map>
+#include<queue>
+#include <bits/stdc++.h>
+using namespace std;
+string SoringCharacters(string s)
+{
     map<char,int> freq;
     int n=s.length();
+    priority_queue<pair<int,char>>pq;
     for(int i=0;i<n;i++)
     {
-        freq[s[i]]++;
+        char ch=s[i];
+        if(freq.count(ch)>0)
+        {
+            freq[ch]++;
+        }
+        else
+        {
+            freq.insert({ch,1});
+            //pq.push({1,ch});
+        }
+
     }
     string solution="";
-   
-    priority_queue<pair<int,char>>pq;
+    pair<int,char> p;
     for(auto i:freq)
     {
-        pq.push({i.second,i.first});
+        char c=i.first;int f=i.second;
+        p={f,c};
+        pq.push(p);
     }
     while(!pq.empty())
     {
@@ -22,10 +38,17 @@ public:
         {
             solution+=temp.second;
         }
-        //cout<<temp.first<<" "<<temp.second<<endl;
         pq.pop();
     }
-
     return solution;
-    }
-};
+
+
+}
+int main()
+{
+
+    string s="cccaaa";
+    string str=SoringCharacters(s);
+    cout<<str;
+    return 0;
+}
