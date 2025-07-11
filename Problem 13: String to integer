@@ -1,0 +1,74 @@
+class Solution {
+public:
+    int myAtoi(string s) {
+        long long int value=0;
+        bool flag=false;
+        bool check=false;
+        bool checksign=false;
+        for(auto i:s)
+        {
+            if(i!=' ' && i!='+' && i!='-' && (i<'0' || i>'9'))
+            {
+                break;
+            }
+            else if(i=='-')
+            {
+                
+                if(checksign==true)
+                {
+                    break;
+                }
+                checksign=true;
+                if(check==true)
+                {
+                    break;
+                }
+                flag=true;
+            }
+            else if(i=='+')
+            {
+                if(checksign==true)
+                {
+                    break;
+                }
+                checksign=true;
+                if(check==true)
+                {
+                    break;
+                }
+            }
+            else if(i>='0' && i<='9')
+            {
+                int k=i;
+                k-=48;
+                value=(value*10)+k;
+                if(value>2147483647)
+                {
+                    if(flag)
+                     value=2147483648;
+                     else
+                     value=2147483647;
+                     break;
+                }
+                check=true;
+            }
+            else if(i==' ' && (check==true || checksign==true))
+            {
+                break;
+            }
+        }
+        if(flag==true)
+        {
+            value=value*-1;
+        }
+        if(value>2147483647)
+        {
+            value=2147483647;
+        }
+        if(value<(-2147483648))
+        {
+            value=-2147483648;
+        }
+        return value;
+    }
+};
